@@ -1,5 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+// delete Input from  --> import { Component, OnInit ,Input}
+import { Component, OnInit } from '@angular/core';
+import {Params, ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
 import {Dish} from './../../shared/dish';
+import{DishService} from './../../services/dish.service';
 
 @Component({
   selector: 'app-dish-detail',
@@ -7,11 +11,20 @@ import {Dish} from './../../shared/dish';
   styleUrls: ['./dish-detail.component.scss']
 })
 export class DishDetailComponent implements OnInit {
-  @Input()
+  // @Input()
   dish : Dish;
-  constructor() { }
+  constructor(private dishservice: DishService, 
+              private location:Location,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    
+    let id = this.route.snapshot.params['id'];
+    this.dish=this.dishservice.getDish(id);
+  }
+
+  goBack(): void{
+    this.location.back();
   }
 
 }

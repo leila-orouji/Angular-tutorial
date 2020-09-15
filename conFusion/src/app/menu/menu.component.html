@@ -7,8 +7,11 @@
     </div>
     <div fxFlex>
         <mat-grid-list cols="2" rowHeight="200px">
+<!-- 
+            <mat-grid-tile *ngFor="let dish of dishes" (click)="selectGrid(dish)"> -->
+                
+            <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]">
 
-            <mat-grid-tile *ngFor="let dish of dishes" (click)="selectGrid(dish)">
                 <img height="200px" matListAvatar src={{dish.image}} alt={{dish.name}}>
                 <mat-grid-tile-footer>
                     <h1>{{dish.name | uppercase}}</h1>                   
@@ -19,19 +22,8 @@
             </mat-grid-tile>
         </mat-grid-list>
     </div>
-    <!-- <div fxFlex>
-        <mat-grid-list cols="2">
-            <mat-grid-tile>
-                <img height="200px" matListAvatar src={{selectedDish.image}} alt={{selectedDish.name}}>
-                
-                    <h1>{{selectedDish.name | uppercase}}</h1>                    
-            </mat-grid-tile>
-                <mat-grid-tile>
-                    <app-dish-detail></app-dish-detail>
-                </mat-grid-tile>
-        </mat-grid-list>
-    </div> -->
-    <app-dish-detail [dish]="selectedDish"></app-dish-detail>
+
+    <!-- <app-dish-detail [dish]="dishdetail/:id"></app-dish-detail> -->
     
 
 </div>
