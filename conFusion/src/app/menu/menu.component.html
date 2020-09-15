@@ -19,7 +19,7 @@
             </mat-grid-tile>
         </mat-grid-list>
     </div>
-    <div fxFlex>
+    <!-- <div fxFlex>
         <mat-grid-list cols="2">
             <mat-grid-tile>
                 <img height="200px" matListAvatar src={{selectedDish.image}} alt={{selectedDish.name}}>
@@ -30,24 +30,8 @@
                     <app-dish-detail></app-dish-detail>
                 </mat-grid-tile>
         </mat-grid-list>
-    </div>
+    </div> -->
     <app-dish-detail [dish]="selectedDish"></app-dish-detail>
     
-    <!-- <div fxFlex *ngIf="selectedDish">
-        <mat-card>
-            <mat-card-header>
-                <mat-card-title>
-                    <h3>{{selectedDish | uppercase}}</h3>
-                </mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src={{selectedDish.image}} alt={{selectedDish.name}}>
-            <mat-card-content>
-                <p>{{selectedDish.description}}</p>
-            </mat-card-content>
-            <mat-card-action>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-            </mat-card-action>
-        </mat-card>
-    </div> -->
+
 </div>
