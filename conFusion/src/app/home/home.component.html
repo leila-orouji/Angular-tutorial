@@ -31,3 +31,18 @@ fxLayoutGap="10px">
         <p>{{promotion.description}}</p>
     </mat-card-content>
 </mat-card>
+
+
+<mat-card *ngIf="corporate" fxFlex>
+    <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>
+            <h3>{{corporate.name|uppercase}}</h3>
+        </mat-card-title>
+    </mat-card-header>
+    <img style="height: 500px;" mat-card-image src={{corporate.image}} alt={{corporate.name}}>
+    <mat-card-content>
+        <p>{{corporate.description}}</p>
+    </mat-card-content>
+</mat-card>
+

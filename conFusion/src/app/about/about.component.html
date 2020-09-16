@@ -1,1 +1,12 @@
-<p>about works!</p>
+
+
+<div fxFlex="40">
+    <mat-list >
+        <h3>Corporate Leaders</h3>
+        <mat-list-item *ngFor="let corporate of corporates">
+            <h3>{{corporate.name|uppercase}}</h3>
+            <p>{{corporate.description}}</p>
+            <p>{{corporate.jobTitle}}</p>
+        </mat-list-item>
+    </mat-list>
+</div>
