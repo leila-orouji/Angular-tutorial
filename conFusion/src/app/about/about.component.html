@@ -1,7 +1,7 @@
 
 
-<div fxFlex="40">
-    <mat-list >
+<div fxFlex="40" >
+    <mat-list *ngIf="corporates">
         <h3>Corporate Leaders</h3>
         <mat-list-item *ngFor="let corporate of corporates">
             <h3>{{corporate.name|uppercase}}</h3>
@@ -9,4 +9,9 @@
             <p>{{corporate.jobTitle}}</p>
         </mat-list-item>
     </mat-list>
+</div>
+
+<div fxFlex [hidden]="corporates">
+    <mat-spinner></mat-spinner>
+    <h4>Loading .. Please wait!</h4>
 </div>

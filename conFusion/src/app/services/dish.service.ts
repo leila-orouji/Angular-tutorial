@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Dish} from '../shared/dish';
-import {Dishes} from '../shared/dishes';
-
+import { Dish } from '../shared/dish';
+import { Dishes } from '../shared/dishes';
+import {Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,45 @@ import {Dishes} from '../shared/dishes';
 export class DishService {
 
   constructor() { }
-  getDishes() : Dish[]{
-    return Dishes;
+  // getDishes() : Promise <Dish[]>{
+  //   return Promise.resolve(Dishes);
+  // }
+
+  // getDishes(): Promise<Dish[]> {
+  //   return new Promise((resolve) => {
+  //     // simukate server latency with 2 second delay 
+  //     setTimeout(
+  //       () => {
+  //         resolve(Dishes)
+  //       }, 2000);
+  //   })
+  // }
+  getDishes(): Observable<Dish[]> {
+    return of (Dishes).pipe(delay(2000))
   }
-  getDish(id: string): Dish{
-     return Dishes.filter((item) => item.id===id)[0]
+  // getDish(id: string): Promise<Dish> {
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       resolve(Dishes.filter((item) => item.id === id)[0])
+  //     }, 2000)
+  //   })
+
+  getDish(id: string): Observable<Dish> {
+    return of (Dishes.filter((item) => item.id === id)[0]).pipe(delay(2000));
   }
-  getFeaturedDish(): Dish{
-      return Dishes.filter((item)=> item.featured)[0];
+
+  getFeaturedDish(): Observable<Dish>{
+    return of (Dishes.filter((item) => item.featured)[0]).pipe(delay(2000));
+  }
+  
+  // getFeaturedDish(): Promise<Dish> {
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       resolve(Dishes.filter((item) => item.featured)[0])
+  //     }, 2000);
+  //   })
+  // }
+  getDishIds() : Observable<string[] | any>{
+    return of (Dishes.map(dish => dish.id));
   }
 }

@@ -13,7 +13,8 @@ export class AboutComponent implements OnInit {
   constructor(private corporateService: CorporateLeaderService) { }
 
   ngOnInit(): void {
-    this.corporates = this.corporateService.getCorporates();
+     this.corporateService. getCorporates()
+      .subscribe (item=> this.corporates = item)
   }
 
 }

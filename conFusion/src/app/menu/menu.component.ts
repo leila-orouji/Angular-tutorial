@@ -13,8 +13,10 @@ export class MenuComponent implements OnInit {
   
   constructor(private dishService: DishService) {}
   ngOnInit(): void {
-    this.dishes = this.dishService.getDishes();
-    this.selectedDish = this.dishService.getDishes()[0];
+    this.dishService.getDishes()
+      .subscribe((dishes)=> this.dishes =dishes );
+    // this.selectedDish = this.dishService.getDishes()[0];
+
   }
 
    selectGrid(dish : Dish ){

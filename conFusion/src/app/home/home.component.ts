@@ -20,9 +20,15 @@ export class HomeComponent implements OnInit {
               private corporateService: CorporateLeaderService) { }
   
   ngOnInit(): void {
-    this.dish = this.dishService.getFeaturedDish();
-    this.promotion = this.promotionService.getFeaturedPromotion();
-    this.corporate = this.corporateService.getFeaturedCorporate();
+    this.dishService.getFeaturedDish()
+      .subscribe ((dish)=> this.dish= dish)
+    
+    this.promotionService.getFeaturedPromotion()
+      .subscribe ((prom)=> this.promotion = prom)
+
+    this.corporateService.getFeaturedCorporate()
+      .subscribe((orporate)=> this.corporate = orporate)
+ 
   }
 
 }
