@@ -6,13 +6,10 @@
         </div>
     </div>
     <div fxFlex *ngIf="dishes">
-        <mat-grid-list cols="2" rowHeight="200px">
-<!-- 
-            <mat-grid-tile *ngFor="let dish of dishes" (click)="selectGrid(dish)"> -->
-                
-            <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]">
-
-                <img height="200px" matListAvatar src={{dish.image}} alt={{dish.name}}>
+        <mat-grid-list cols="2" rowHeight="200px">                
+            <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]" appHighlight>
+               
+                <img height="200px" matListAvatar src="{{baseURL + dish.image}}" alt={{dish.name}}>
                 <mat-grid-tile-footer>
                     <h1>{{dish.name | uppercase}}</h1>                   
                     <p>
@@ -22,12 +19,14 @@
             </mat-grid-tile>
         </mat-grid-list>
     </div>
-    <div fxFlex [hidden]="dishes">
+    <div fxFlex [hidden]="dishes || errMess">
         <mat-spinner></mat-spinner>
         <h4>Loading .. Please wait!</h4>
     </div>
 
-    <!-- <app-dish-detail [dish]="dishdetail/:id"></app-dish-detail> -->
+    <div fxFlex *ngIf="errMess">
+        <h2>Error</h2>
+        <h4>{{errMess}}</h4>
+    </div>
     
-
 </div>
